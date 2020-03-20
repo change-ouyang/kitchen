@@ -1,8 +1,8 @@
-网上厨房/vue.移动端项目
+
 
 > A Vue.js project
 
-## Build Setup
+## 网上厨房/vue.移动端项目
 
 ``` bash
 # install dependencies
