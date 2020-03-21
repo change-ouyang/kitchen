@@ -11,6 +11,10 @@ import Class from '../pages/class/class.vue'
 import Fresh from '../pages/fresh/fresh.vue'
 import Favorite from '../pages/favorite/favorite.vue'
 import Mine from '../pages/mine/mine.vue'
+import Personal from '../pages/mine/personal.vue'
+import Login from '../pages/mine/login.vue'
+import Logincode from '../pages/mine/logincode.vue'
+import Register from '../pages/mine/register.vue'
 
 Vue.use(Router)
 
@@ -29,5 +33,11 @@ export default new Router({
     {path:'/fresh',component:Fresh},
     {path:'/favorite',component:Favorite},
     {path:'/mine',component:Mine},
+    {path:'/personal',component:Personal,children:[
+      {path:'',redirect:'login'},
+      {path:'login',component:Login},
+      {path:'logincode',component:Logincode},
+    ]},
+    
   ]
 })

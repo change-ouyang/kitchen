@@ -107,7 +107,6 @@ export default {
     .feat{
         width: 90%;
         margin: 0 auto;
-        height: 180px;
         background: white;
         margin-top: -50px;
         border-radius: 10px;
@@ -116,6 +115,7 @@ export default {
         display: flex;
         flex-wrap: wrap;
         padding: 15px;
+        box-shadow: 0px 1px 5px gray;
     }
     .feat div{
         width: 25%;

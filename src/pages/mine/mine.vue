@@ -8,7 +8,7 @@
             </p>
         </div>
         <!-- 登录 -->
-        <div class="login">
+        <div class="login" @click="personal()">
             <img src="../../../static/image/drawable-xxhdpi-v4/mine_no_login_head.png" alt="">
             <h3>请登录</h3>
         </div>
@@ -79,7 +79,14 @@
 </template>
 <script>
 export default {
-    name:'mine'
+    name:'mine',
+    methods: {
+        personal(){
+            this.$router.push({
+                path:'/personal'
+            })
+        }
+    },
 }
 </script>
 <style lang="">

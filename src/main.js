@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 Vue.prototype.$ajax=ajax
 Vue.use(Router)
 Vue.use(MintUI)
-Vue.use(ElementUI);
+Vue.use(ElementUI)
 
 //添加
 const originalPush = Router.prototype.push

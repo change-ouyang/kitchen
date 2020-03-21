@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
-    <tabbar></tabbar>
+    <tabbar :istab="showtab"></tabbar>
   </div>
 </template>
 
@@ -11,6 +11,21 @@ export default {
   name: 'App',
   components:{
     Tabbar
+  },
+  data() {
+    return {
+      showtab:true
+    }
+  },
+  watch: {
+    '$route':function(to,from,next){
+      let arr=['/index','/index/tuijian','/index/jiachang','/index/hongpei','/index/baby','/index/zaocan','/class','/fresh','/favorite','/mine']
+      if(arr.includes(to.path)){
+        this.showtab=true
+      }else{
+        this.showtab=false
+      }
+    }
   },
   beforeCreate() {
     // this.$router.push('/index')
