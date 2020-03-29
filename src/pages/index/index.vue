@@ -69,7 +69,7 @@ export default {
     .index-nav .color{
         background: #FFB044;
         color: white;
-        border-radius: 50%;
-        transition: all 0.3s;
+        border-radius: 100%;
+        transition: all 0.2s;
     }
 </style>

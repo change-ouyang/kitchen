@@ -65,7 +65,7 @@ export default {
     }
     #class-slide .swiper-slide img{
         width: 100%;
-        height: 150px;
+        height: 120px;
     }
     #class-slide .swiper-slide p{
         font-size: 12px;

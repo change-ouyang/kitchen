@@ -10,7 +10,7 @@
         <!-- 登录 -->
         <div class="login" @click="personal()">
             <img src="../../../static/image/drawable-xxhdpi-v4/mine_no_login_head.png" alt="">
-            <h3>请登录</h3>
+            <h4>请登录</h4>
         </div>
         <!-- vip商城 -->
         <div class="vipshop">
@@ -104,6 +104,9 @@ export default {
         color: white;
         padding: 10px;
         box-sizing: border-box;
+    }
+    .mineheader p span{
+        margin-right: 10px;
     }
     .login{
         width: 90%;

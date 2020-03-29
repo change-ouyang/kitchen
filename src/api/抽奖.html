@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽奖</title>
+</head>
+<body>
+    <button id="btn">抽奖</button>
+    <ul id="list">
+
+    </ul>
+    <script>
+        let btn=document.getElementById('btn');
+        var list=document.getElementById('list');
+        function * luck(first=1,second=2,third=3){
+            let firstPrize = ['1A','1B','1C','1D','1E'];
+            let secondPrize = ['2A','2B','2C','2D','2E','2F','2G','2H','2I'];
+            let thirdPrize = ['3A','3B','3C','3D','3E','3F','3G','3H','3I','3G','3K','3O','3P'];
+            let random;
+            let count=0;
+                while (true) {
+                    if(count<first){
+                        random=Math.floor(Math.random()*firstPrize.length)
+                        let oli=document.createElement('li')
+                        oli.innerHTML=firstPrize[random]
+                        list.appendChild(oli)
+                        yield count+1;
+                        count++;
+                        firstPrize.splice(random,1);
+                    }else if(count<first+second){
+                        random=Math.floor(Math.random()*secondPrize.length)
+                        let oli=document.createElement('li')
+                        oli.innerHTML=secondPrize[random]
+                        list.appendChild(oli)
+                        yield count+1;
+                        count++;
+                        secondPrize.splice(random,1);
+                    }else if(count<first+second+third){
+                        random=Math.floor(Math.random()*thirdPrize.length)
+                        let oli=document.createElement('li')
+                        oli.innerHTML=thirdPrize[random]
+                        list.appendChild(oli)
+                        yield count+1;
+                        count++;
+                        thirdPrize.splice(random,1);
+                    }else{
+                        return false;
+                    }
+                }
+        }
+        let t = luck(1,2,3);
+			btn.onclick=function(){
+                t.next().value;
+            }
+    </script>
+</body>
+</html>

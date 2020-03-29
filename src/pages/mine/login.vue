@@ -13,7 +13,7 @@
             <div class="login-btn">
                 <mt-button v-show="showbtn" disabled class="btn-item1" type="primary" size="large" @click="login(username,password)">立即登录</mt-button>
                 <mt-button v-show="hidebtn" class="btn-item2" type="primary" size="large">立即登录</mt-button>
-                <mt-button class="btn-item3" size="large" plain>没有账号？立即注册</mt-button>
+                <mt-button class="btn-item3" size="large" plain @click="toregister()">没有账号？立即注册</mt-button>
             </div>
         </div>
         <div class="account">
@@ -61,6 +61,11 @@ export default {
         },
         login(username,password){
             
+        },
+        toregister(){
+            this.$router.push({
+                path:'/register'
+            })
         }
     },
 }

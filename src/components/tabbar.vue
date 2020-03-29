@@ -1,5 +1,5 @@
 <template>
-    <div class="tabbarwrap" v-show="istab">
+    <div class="tabbarwrap">
         <tabbaritem title="首页" @getevent="setevent" mark="index" class="tabbarwrap-div" :active="bol">
             <img src="../../static/image/drawable-xhdpi-v4/icon_main_home_normal.png" alt="" slot="img1">
             <img src="../../static/image/drawable-xhdpi-v4/icon_main_home_sel.png" alt="" slot="img2">
@@ -26,7 +26,6 @@
 import Tabbaritem from '../components/tabbaritem'
 export default {
     name:'tabbar',
-    props:['istab'],
     components:{
         Tabbaritem,
     },

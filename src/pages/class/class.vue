@@ -45,12 +45,28 @@
                 <p>其他</p>
             </div>
         </div>
+        <!-- 查看更多 -->
         <div class="coures">
             <h3>课程专辑</h3>
-            <p>查看更多</p>
+            <p @click="more()">查看更多</p>
         </div>
         <!-- 轮播图 -->
         <slide></slide>
+        <!-- 全部课程 -->
+        <div class="course-type">
+            <div class="coure-typeleft">
+                <h3>全部课程</h3>
+            </div>
+            <div class="coure-typeright">
+                <ul>
+                    <router-link active-class="coure-color" to="/class/classnew" tag="li">最新</router-link>
+                    <router-link active-class="coure-color" to="/class/classhot" tag="li">最热</router-link>
+                    <router-link active-class="coure-color" to="/class/classold" tag="li">往期</router-link>
+                </ul>
+            </div>
+        </div>
+        <!-- 课程内容 -->
+        <router-view></router-view>
     </div>
 </template>
 <script>
@@ -59,7 +75,12 @@ export default {
     name:'class',
     components:{
         Slide
-    }
+    },
+    methods: {
+        more(){
+            this.$router.push('/classmore')
+        }
+    },
 }
 </script>
 <style lang="">
@@ -148,10 +169,35 @@ export default {
         padding-bottom: 20px;
     }
     .coures p{
-        height: 25px;
-        line-height: 30px;
+        line-height: 20px;
         background: #EBEBEB;  
         border-radius: 15px;
+        font-size: 12px;
         color: gray;
+        margin: 5px;
+    }
+    .course-type{
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+    }
+    .course-type .coure-typeright ul li{
+        list-style: none;
+        display: inline-block;
+        margin-right: 10px;
+        background: #EBEBEB;
+        color: gray;
+        font-size: 12px;
+        padding: 2px;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+    .course-type .coure-typeright ul .coure-color{
+        background: white;
+        color: #4FA2C1;
+        font-weight: bold;
+        transition: all 0.2s;
     }
 </style>

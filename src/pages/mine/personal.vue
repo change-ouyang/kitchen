@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 返回 -->
-        <mt-header title="登录" class="r-register-header">
+        <mt-header title="登录" class="r-login-header">
             <router-link to="/mine" slot="left">
                 <mt-button icon="back">取消</mt-button>
             </router-link>
@@ -23,7 +23,7 @@ export default {
 }
 </script>
 <style lang="">
-    .r-register-header{
+    .r-login-header{
         width: 100%;
         height: 50px;
         background: white;
@@ -33,7 +33,7 @@ export default {
         width: 100%;
         height: 40px;
         line-height: 20px;
-        border-bottom: 1px dashed gray;
+        box-shadow: 0px 0px 2px gray;
         display: flex;
         padding: 10px;
         box-sizing: border-box;
