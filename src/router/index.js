@@ -28,6 +28,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {path:'/',redirect:'index'},
     {path:'/index',component:Index,meta:{showtab:true,title:'首页'},children:[
       {path:'/',redirect:'tuijian'},
       {path:'tuijian',component:Tuijian,meta:{showtab:true}},

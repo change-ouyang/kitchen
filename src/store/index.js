@@ -30,15 +30,16 @@ let actions={
             commit('users',res.data);
         })
     },
-    like({commit},id){ //食话点赞传值
-        commit('like',id)
+    like({commit},index){ //食话点赞传值
+        // console.log(index);
+        commit('like',index)
     },
     atten({commit},id){ //点赞显示和人数显示
         commit('atten',id)
     },
-    bigphoto({commit},index){ //图片放大
-        console.log(index);
-        commit('bigphoto',index)
+    bigphoto({commit},img){ //图片放大
+        console.log(img);
+        commit('bigphoto',img)
     },
     clearbg({commit}){ //清除遮罩层
         commit('clearbg')
@@ -48,12 +49,16 @@ let mutations={
     users(state,data){ //用户信息
         state.list=data
     },
-    like(state,id){ //点赞显示和人数显示
+    like(state,index){ //点赞显示和人数显示
         // this.axios.interceptors.request.use() //调用拦截器
         let likeindex=state.list.find((item)=>{
-            return item.id==id
+            // console.log(item.id);
+            return item.id==index
         })
-        if(likeindex){
+        let {id}=likeindex;
+        let {zan}=likeindex
+        console.log(zan);
+        if(id==index){
             state.likeshow=!state.likeshow
             state.likehide=!state.likehide
         }else{
@@ -118,13 +123,13 @@ let mutations={
             });
         }
     },
-    bigphoto(state,index){ //图片放大
+    bigphoto(state,img){ //图片放大
         let imgindex=state.list.find((item)=>{
             // console.log(item.id);
-            return item.img[0][index];
+            return item.img[0];
         })
         // console.log(imgindex);
-        state.photoindex=imgindex.img[0][index]
+        state.photoindex=img
         state.photoshow=true
     },
     clearbg(state){ //清除遮罩层

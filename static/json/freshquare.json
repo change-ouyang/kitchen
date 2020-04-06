@@ -15,7 +15,8 @@
         ],
         "title":"草莓山药",
         "comment":"15",
-        "like":"10"
+        "like":"10",
+        "zan":"false"
     },
     {
         "id":"2",
@@ -36,7 +37,8 @@
         ],
         "title":"黄金小馒头",
         "comment":"22",
-        "like":"12"
+        "like":"12",
+        "zan":"false"
     },
     {
         "id":"3",
@@ -58,6 +60,7 @@
         ],
         "title":"蒜苗炒猪肝",
         "comment":"17",
-        "like":"15"
+        "like":"15",
+        "zan":"false"
     }
 ]

@@ -1,21 +1,24 @@
 <template>
     <div class="loginwrap">
         <div class="login-ipt">
-            <div @click="user(username)">
+            <!-- 账号密码 -->
+            <div>
                 <label for="">账号</label>
-                <input type="text" v-model="username" placeholder="请输入手机号/Email(区分大小写)"><br>
+                <input type="text" @click="find()" v-model="username" placeholder="请输入手机号/Email(区分大小写)"><br>
                 <label for="">密码</label>
-                <input type="password" v-model="password" placeholder="请输入密码">
+                <input type="password" @click="find()" v-model="password" placeholder="请输入密码">
                 <div class="forget">
                     <p>忘记密码？</p>
                 </div>
             </div>
+            <!-- 登录注册 -->
             <div class="login-btn">
-                <mt-button v-show="showbtn" disabled class="btn-item1" type="primary" size="large" @click="login(username,password)">立即登录</mt-button>
-                <mt-button v-show="hidebtn" class="btn-item2" type="primary" size="large">立即登录</mt-button>
-                <mt-button class="btn-item3" size="large" plain @click="toregister()">没有账号？立即注册</mt-button>
+                <mt-button v-show="showbtn" disabled class="btn-item1" type="primary" size="large">立即登录</mt-button>
+                <mt-button v-show="!showbtn" class="btn-item2" type="primary" size="large" @click="login(username,password)">立即登录</mt-button>
+                <mt-button class="btn-item3" size="large" @click="toregister()">没有账号？立即注册</mt-button>
             </div>
         </div>
+        <!-- 第三方账号登录 -->
         <div class="account">
             <p>
                 第三方账号登录
@@ -39,28 +42,63 @@
     </div>
 </template>
 <script>
+import Register from '../mine/register'
 import { Button } from 'mint-ui';
 import Vue from 'vue'
 Vue.component(Button.name, Button);
+import { MessageBox } from 'mint-ui';
 export default {
     name:'login',
+    components:{
+        Register
+    },
     data() {
         return {
             username:'',
             password:'',
             showbtn:true,
-            hidebtn:false,
+            loading:false,
         }
     },
+    created() {
+        let user=this.$route.query.username;
+        let pwd=this.$route.query.password;
+        let root=localStorage.getItem('user')
+        // console.log(user);
+    },
     methods: {
-        user(username){
-            if(!this.username==''){
+        find(){
+            if(this.username!='' || this.password!=''){
                 this.showbtn=false
-                this.hidebtn=true
+            }else{
+                this.showbtn=true
             }
         },
         login(username,password){
-            
+            this.bgshow=true;
+            let user=this.$route.query.username;
+            let pwd=this.$route.query.password;
+            if(user==username && pwd==password){
+                // console.log(this.username);
+                // console.log(username);
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                });
+                setTimeout(() => {
+                    loading.close();
+                    this.$router.push({
+                        path:'/mine',
+                        query:{
+                            id:username
+                        }
+                    })
+                }, 1500);
+            }else{
+                MessageBox('提示', '登录失败');
+            }
         },
         toregister(){
             this.$router.push({
@@ -73,6 +111,7 @@ export default {
 <style lang="">
     .loginwrap{
         width: 100%;
+        height: calc(100vh - 90px);
     }
     .login-ipt{
         width: 90%;
@@ -96,6 +135,7 @@ export default {
         height: 20px;
         position: absolute;
         right: 0;
+        margin-top: 5px;
         font-size: 12px;
         color: gray;
     }

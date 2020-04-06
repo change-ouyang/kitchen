@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="personal-wrap">
         <!-- 返回 -->
         <mt-header title="登录" class="r-login-header">
             <router-link to="/mine" slot="left">
@@ -19,10 +19,14 @@ import Vue from 'vue'
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
 export default {
-    name:'register',
+    name:'personal',
 }
 </script>
 <style lang="">
+    .personal-wrap{
+        width: 100%;
+        height: 100vh;
+    }
     .r-login-header{
         width: 100%;
         height: 50px;

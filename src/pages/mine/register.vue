@@ -1,5 +1,10 @@
 <template>
-    <div>
+    <div 
+        class="register-wrap"
+        v-loading="loading"
+        element-loading-text="加载登录页..."
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.8)">
         <!-- 返回 -->
         <mt-header title="注册" class="r-register-header">
             <router-link to="/personal" slot="left">
@@ -7,15 +12,15 @@
             </router-link>
         </mt-header>
         <div class="register-ipt">
-            <div @click="user(password)">
+            <div>
                 <label for="">手机号</label>
                 <input type="text" v-model="username" placeholder="请输入手机号"><br>
                 <label for="" style="margin-left:10px">密码</label>
-                <input type="text" v-model="password" placeholder="请输入密码">
+                <input type="text" v-model="password" placeholder=" 请输入密码">
             </div>
             <div class="protocol">
-                <span @click="icon()" class="el-icon-football" v-show="iconshow"></span>
-                <span @click="icon()" class="el-icon-success" v-show="!iconshow"></span>
+                <span @click="icon(username,password)" class="el-icon-football" v-show="iconshow"></span>
+                <span @click="icon(username,password)" class="el-icon-success" v-show="!iconshow"></span>
                 <span class="title">
                     阅读并同意
                     <span style="color:orange;font-size:12px">
@@ -24,8 +29,8 @@
                 </span>
             </div>
             <div class="register-btn">
-                <mt-button v-show="showbtn" disabled class="btn-item1" type="primary" size="large" @click="register(username,password)">立即注册</mt-button>
-                <mt-button v-show="hidebtn" class="btn-item2" type="primary" size="large">立即注册</mt-button>
+                <mt-button v-show="showbtn" disabled class="btn-item1" type="primary" size="large">立即注册</mt-button>
+                <mt-button v-show="!showbtn" class="btn-item2" type="primary" size="large" @click="register(username,password)">立即注册</mt-button>
             </div>
         </div>
     </div>
@@ -34,6 +39,7 @@
 import { Button } from 'mint-ui';
 import Vue from 'vue'
 Vue.component(Button.name, Button);
+import { Toast } from 'mint-ui';
 export default {
     name:'register',
     data() {
@@ -41,27 +47,46 @@ export default {
             username:'',
             password:'',
             showbtn:true,
-            hidebtn:false,
             iconshow:true,
+            loading: false
         }
     },
     methods: {
-        user(username){
-            if(!this.username==='' && this.iconshow===true){
-                this.showbtn=false
-                this.hidebtn=true
-            }
-        },
         register(username,password){
-            console.log(username,password);
+            Toast({
+                message: '注册成功',
+                position: 'middle',
+                duration: 1000
+            });
+            setTimeout(() => {
+                this.loading=true;
+            }, 1500);
+            setTimeout(() => {
+                this.$router.push({
+                    path:`/personal/login`,
+                    query:{
+                        username:username,
+                        password:password
+                    }
+                })
+            }, 4000);
         },
-        icon(){
+        icon(username,password){
             this.iconshow=!this.iconshow
+            if(this.username!=='' && this.password!=='' && this.iconshow===false){
+                this.showbtn=!this.showbtn
+            }else{
+                this.showbtn=!this.showbtn
+            }
         }
     },
 }
 </script>
 <style lang="">
+    .register-wrap{
+        width: 100wh;
+        height: 100vh;
+    }
     .r-register-header{
         width: 100%;
         height: 50px;

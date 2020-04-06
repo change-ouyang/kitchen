@@ -11,8 +11,12 @@ export default {
     props:['title','mark','active'],
     data() {
         return {
-            
+            typeid:'',
         }
+    },
+    created() {
+        let id=this.$route.query.id;
+        this.typeid=id
     },
     computed: {
         bol(){
@@ -36,12 +40,12 @@ export default {
         width: 20%;
         height: 50px;
         float: left;
-        outline: 1px dashed gray;
         text-align: center;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-self: center;
+        box-shadow: 0px 0px 1px gray;
     }
     .tabbaritem img{
         width: 20px;

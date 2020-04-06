@@ -33,9 +33,10 @@
             <!-- 图片区 -->
             <div class="photo">
                 <div v-for="(img, index) in item.img[0]" :key="index">
-                    <img :src="img" alt="" @click="bigphoto(index)">
+                    <img :src="img" alt="" @click="bigphoto(img)">
                 </div>
             </div>
+            <!-- 遮罩层 -->
             <div class="freshsquare-bg" v-show="$store.state.photoshow" @click="clearbg()">
                 <div class="dialog">
                     <img :src="$store.state.photoindex" alt="">
